@@ -16,6 +16,10 @@ import 'package:talky/features/chat/domain/repositories.dart';
 import 'package:talky/features/chat/domain/usecases/listeen_message.dart';
 import 'package:talky/features/chat/domain/usecases/send_message.dart';
 import 'package:talky/features/chat/presentation/bloc/chat_bloc.dart';
+import 'package:talky/features/users/data/user_repository.dart';
+import 'package:talky/features/users/domain/repository/user_repository.dart';
+import 'package:talky/features/users/domain/usecase/user_usecase.dart';
+import 'package:talky/features/users/presentation/bloc/user_bloc.dart';
 import 'package:talky/features/video_call/data/agora_service_impl.dart';
 import 'package:talky/features/video_call/domain/agora_repository.dart';
 import 'package:talky/features/video_call/presentation/bloc/video_call_bloc.dart';
@@ -88,4 +92,16 @@ Future<void> setupLocator() async {
   sl.registerFactory(() => VideoCallBloc(sl()));
   sl.registerLazySingleton(() => SaveUser(sl()));
   sl.registerLazySingleton(() => LoginUser(sl()));
+
+
+////////////////Users Listing//////////////////
+
+  // Repository
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(sl()));
+
+  // Usecase
+  sl.registerLazySingleton(() => FetchUsers(sl()));
+
+  // Bloc
+  sl.registerFactory(() => UserBloc(sl()));
 }

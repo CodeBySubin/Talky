@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:talky/core/routes/app_route_genarator.dart';
-import 'package:talky/dependency_injection/dependency_injection.dart';
+import 'package:talky/di/dependency_injection.dart';
 import 'package:talky/features/authentication/presentation/bloc/bloc.dart';
 import 'package:talky/features/chat/presentation/bloc/chat_bloc.dart';
+import 'package:talky/features/users/presentation/bloc/user_bloc.dart';
+import 'package:talky/features/users/presentation/bloc/user_event.dart';
 import 'package:talky/features/video_call/presentation/bloc/video_call_bloc.dart';
 
 void main() async {
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
           BlocProvider<VideoCallBloc>(create: (_) => sl<VideoCallBloc>()),
           BlocProvider(create: (_) => sl<ChatBloc>()),
           BlocProvider<AuthBloc>(create: (_) => sl<AuthBloc>()),
+          BlocProvider(create: (_) => sl<UserBloc>()),
         ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
@@ -57,3 +60,61 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// lib/
+// ├── core/
+// │   ├── errors/
+// │   ├── network/
+// │   └── utils/
+// ├── injection/
+// │   └── injection_container.dart
+// ├── features/
+// │   ├── auth/
+// │   │   ├── data/
+// │   │   │   ├── datasources/
+// │   │   │   ├── models/
+// │   │   │   └── repositories/
+// │   │   ├── domain/
+// │   │   │   ├── entities/
+// │   │   │   ├── repositories/
+// │   │   │   └── usecases/
+// │   │   └── presentation/
+// │   │       ├── pages/
+// │   │       ├── controllers/  // or bloc / cubit / viewmodel
+// │   │       └── widgets/
+// │   ├── chat/
+// │   │   ├── data/
+// │   │   ├── domain/
+// │   │   └── presentation/
+// │   ├── video_call/
+// │   │   ├── data/
+// │   │   ├── domain/
+// │   │   └── presentation/
+// │   └── audio_call/
+// │       ├── data/
+// │       ├── domain/
+// │       └── presentation/
+// └── main.dart
+
+// lib/
+// ├── core/
+// │   ├── constants/
+// │   ├── errors/
+// │   ├── network/
+// │   └── utils/
+// ├── data/
+// │   ├── datasources/
+// │   ├── models/
+// │   └── repositories/
+// ├── domain/
+// │   ├── entities/
+// │   ├── repositories/
+// │   └── usecases/
+// ├── presentation/
+// │   ├── controllers/ (or blocs / cubits / viewmodels)
+// │   ├── pages/
+// │   ├── widgets/
+// │   └── routes/
+// ├── injection/
+// │   └── injection_container.dart
+// └── main.dart

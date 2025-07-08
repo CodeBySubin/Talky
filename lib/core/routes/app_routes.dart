@@ -5,6 +5,7 @@ class AppRoutes {
   static const register = "/register";
   static const otp = '/otp';
   static const login = '/login';
+  static const users = '/users';
 }
 
 class RouteNames {
@@ -14,4 +15,5 @@ class RouteNames {
   static const register = "register";
   static const otp = 'otp';
   static const login = 'login';
+  static const users = 'users';
 }

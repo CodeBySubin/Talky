@@ -6,11 +6,12 @@ import 'package:talky/features/authentication/presentation/page/otp.dart';
 import 'package:talky/features/authentication/presentation/page/register.dart';
 import 'package:talky/features/chat/presentation/view/chat.dart';
 import 'package:talky/features/splash/splash.dart';
+import 'package:talky/features/users/presentation/page/users.dart';
 import 'package:talky/features/video_call/presentation/view/video_call.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.login,
+    initialLocation: AppRoutes.users,
     routes: [
       GoRoute(
         path: AppRoutes.splash,
@@ -44,6 +45,12 @@ class AppRouter {
           final authUser = state.extra as AuthUser;
           return Otp(user: authUser);
         },
+      ),
+
+         GoRoute(
+        path: AppRoutes.users,
+        name: RouteNames.users,
+        builder: (context, state) =>  UserPage(),
       ),
     ],
   );

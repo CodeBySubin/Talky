@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "822429949168",
+    "project_id": "finflux-3b67e",
+    "storage_bucket": "finflux-3b67e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822429949168:android:52dc3d9a2fbd9157adf635",
+        "android_client_info": {
+          "package_name": "com.example.finflux"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqNhWXDIxP_geb-p4bmzbem7pjtU6Aq9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

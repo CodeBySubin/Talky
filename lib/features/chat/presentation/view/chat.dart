@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talky/features/chat/domain/entities.dart';
@@ -9,11 +10,23 @@ import 'package:talky/features/chat/presentation/bloc/chat_state.dart';
 
 
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
+  final String user;
+
+  ChatScreen({super.key, required this.user});
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController controller = TextEditingController();
 
-  ChatScreen({super.key});
-
+@override
+  void initState() {
+    context.read<ChatBloc>().add(ChatEvent.tokengenrate(widget.user));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

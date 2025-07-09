@@ -53,7 +53,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _saveUser(SaveUserEvent event, Emitter<AuthState> emit) async {
     emit(AuthState.loading());
     try {
-      await saveUser(event.name, event.phone, event.name);
+      await saveUser(event.name, event.phone, event.passowrd);
       emit(AuthState.registerSuccess());
     } catch (e) {
       emit(AuthState.failure("Failed to save user"));

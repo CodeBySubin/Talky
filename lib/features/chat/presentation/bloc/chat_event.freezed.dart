@@ -14,61 +14,30 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatEvent {
 
- ChatMessage get message;
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ChatEventCopyWith<ChatEvent> get copyWith => _$ChatEventCopyWithImpl<ChatEvent>(this as ChatEvent, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatEvent&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatEvent);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ChatEvent(message: $message)';
+  return 'ChatEvent()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ChatEventCopyWith<$Res>  {
-  factory $ChatEventCopyWith(ChatEvent value, $Res Function(ChatEvent) _then) = _$ChatEventCopyWithImpl;
-@useResult
-$Res call({
- ChatMessage message
-});
-
-
-
-
-}
-/// @nodoc
-class _$ChatEventCopyWithImpl<$Res>
-    implements $ChatEventCopyWith<$Res> {
-  _$ChatEventCopyWithImpl(this._self, this._then);
-
-  final ChatEvent _self;
-  final $Res Function(ChatEvent) _then;
-
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? message = null,}) {
-  return _then(_self.copyWith(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as ChatMessage,
-  ));
-}
-
+class $ChatEventCopyWith<$Res>  {
+$ChatEventCopyWith(ChatEvent _, $Res Function(ChatEvent) __);
 }
 
 
@@ -86,12 +55,13 @@ extension ChatEventPatterns on ChatEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChatSend value)?  send,TResult Function( ChatReceive value)?  receive,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChatSend value)?  send,TResult Function( ChatReceive value)?  receive,TResult Function( tokengen value)?  tokengenrate,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChatSend() when send != null:
 return send(_that);case ChatReceive() when receive != null:
-return receive(_that);case _:
+return receive(_that);case tokengen() when tokengenrate != null:
+return tokengenrate(_that);case _:
   return orElse();
 
 }
@@ -109,12 +79,13 @@ return receive(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChatSend value)  send,required TResult Function( ChatReceive value)  receive,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChatSend value)  send,required TResult Function( ChatReceive value)  receive,required TResult Function( tokengen value)  tokengenrate,}){
 final _that = this;
 switch (_that) {
 case ChatSend():
 return send(_that);case ChatReceive():
-return receive(_that);case _:
+return receive(_that);case tokengen():
+return tokengenrate(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -131,12 +102,13 @@ return receive(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChatSend value)?  send,TResult? Function( ChatReceive value)?  receive,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChatSend value)?  send,TResult? Function( ChatReceive value)?  receive,TResult? Function( tokengen value)?  tokengenrate,}){
 final _that = this;
 switch (_that) {
 case ChatSend() when send != null:
 return send(_that);case ChatReceive() when receive != null:
-return receive(_that);case _:
+return receive(_that);case tokengen() when tokengenrate != null:
+return tokengenrate(_that);case _:
   return null;
 
 }
@@ -153,11 +125,12 @@ return receive(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( ChatMessage message)?  send,TResult Function( ChatMessage message)?  receive,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( ChatMessage message)?  send,TResult Function( ChatMessage message)?  receive,TResult Function( String userid)?  tokengenrate,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChatSend() when send != null:
 return send(_that.message);case ChatReceive() when receive != null:
-return receive(_that.message);case _:
+return receive(_that.message);case tokengen() when tokengenrate != null:
+return tokengenrate(_that.userid);case _:
   return orElse();
 
 }
@@ -175,11 +148,12 @@ return receive(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( ChatMessage message)  send,required TResult Function( ChatMessage message)  receive,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( ChatMessage message)  send,required TResult Function( ChatMessage message)  receive,required TResult Function( String userid)  tokengenrate,}) {final _that = this;
 switch (_that) {
 case ChatSend():
 return send(_that.message);case ChatReceive():
-return receive(_that.message);case _:
+return receive(_that.message);case tokengen():
+return tokengenrate(_that.userid);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,11 +170,12 @@ return receive(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( ChatMessage message)?  send,TResult? Function( ChatMessage message)?  receive,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( ChatMessage message)?  send,TResult? Function( ChatMessage message)?  receive,TResult? Function( String userid)?  tokengenrate,}) {final _that = this;
 switch (_that) {
 case ChatSend() when send != null:
 return send(_that.message);case ChatReceive() when receive != null:
-return receive(_that.message);case _:
+return receive(_that.message);case tokengen() when tokengenrate != null:
+return tokengenrate(_that.userid);case _:
   return null;
 
 }
@@ -215,11 +190,11 @@ class ChatSend implements ChatEvent {
   const ChatSend(this.message);
   
 
-@override final  ChatMessage message;
+ final  ChatMessage message;
 
 /// Create a copy of ChatEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ChatSendCopyWith<ChatSend> get copyWith => _$ChatSendCopyWithImpl<ChatSend>(this, _$identity);
 
@@ -245,7 +220,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $ChatSendCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
   factory $ChatSendCopyWith(ChatSend value, $Res Function(ChatSend) _then) = _$ChatSendCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
  ChatMessage message
 });
@@ -264,7 +239,7 @@ class _$ChatSendCopyWithImpl<$Res>
 
 /// Create a copy of ChatEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(ChatSend(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as ChatMessage,
@@ -281,11 +256,11 @@ class ChatReceive implements ChatEvent {
   const ChatReceive(this.message);
   
 
-@override final  ChatMessage message;
+ final  ChatMessage message;
 
 /// Create a copy of ChatEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ChatReceiveCopyWith<ChatReceive> get copyWith => _$ChatReceiveCopyWithImpl<ChatReceive>(this, _$identity);
 
@@ -311,7 +286,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $ChatReceiveCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
   factory $ChatReceiveCopyWith(ChatReceive value, $Res Function(ChatReceive) _then) = _$ChatReceiveCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
  ChatMessage message
 });
@@ -330,10 +305,76 @@ class _$ChatReceiveCopyWithImpl<$Res>
 
 /// Create a copy of ChatEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(ChatReceive(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as ChatMessage,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class tokengen implements ChatEvent {
+  const tokengen(this.userid);
+  
+
+ final  String userid;
+
+/// Create a copy of ChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$tokengenCopyWith<tokengen> get copyWith => _$tokengenCopyWithImpl<tokengen>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is tokengen&&(identical(other.userid, userid) || other.userid == userid));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,userid);
+
+@override
+String toString() {
+  return 'ChatEvent.tokengenrate(userid: $userid)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $tokengenCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
+  factory $tokengenCopyWith(tokengen value, $Res Function(tokengen) _then) = _$tokengenCopyWithImpl;
+@useResult
+$Res call({
+ String userid
+});
+
+
+
+
+}
+/// @nodoc
+class _$tokengenCopyWithImpl<$Res>
+    implements $tokengenCopyWith<$Res> {
+  _$tokengenCopyWithImpl(this._self, this._then);
+
+  final tokengen _self;
+  final $Res Function(tokengen) _then;
+
+/// Create a copy of ChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? userid = null,}) {
+  return _then(tokengen(
+null == userid ? _self.userid : userid // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

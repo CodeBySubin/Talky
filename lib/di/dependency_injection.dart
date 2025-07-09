@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talky/core/network/firebas_api_client.dart';
-import 'package:talky/features/authentication/data/repository/auth_repositor_impl.dart';
+import 'package:talky/core/utils/secure_storage.dart';
+import 'package:talky/features/authentication/data/auth_repositor_impl.dart';
 import 'package:talky/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:talky/features/authentication/domain/usecases/login_user.dart';
 import 'package:talky/features/authentication/domain/usecases/save_user.dart';
@@ -93,8 +94,7 @@ Future<void> setupLocator() async {
   sl.registerLazySingleton(() => SaveUser(sl()));
   sl.registerLazySingleton(() => LoginUser(sl()));
 
-
-////////////////Users Listing//////////////////
+  ////////////////Users Listing//////////////////
 
   // Repository
   sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(sl()));
@@ -104,4 +104,7 @@ Future<void> setupLocator() async {
 
   // Bloc
   sl.registerFactory(() => UserBloc(sl()));
+
+////////////////toke//////////////////////////
+  sl.registerLazySingleton(() => SecureStorageHelper());
 }

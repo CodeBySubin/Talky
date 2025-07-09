@@ -106,13 +106,13 @@ class _OtpState extends State<Otp> {
                       success:
                           () => context.read<AuthBloc>().add(
                             AuthEvent.saveUser(
-                              otpController.text,
+                             widget.user.name,
                               widget.user.mobile,
                               widget.user.password,
                             ),
                           ),
                       registerSuccess:
-                          () => context.pushReplacement(AppRoutes.chat),
+                          () => context.pushReplacement(AppRoutes.users),
                       failure: (error) {
                         context.pop();
                         showToast(error);

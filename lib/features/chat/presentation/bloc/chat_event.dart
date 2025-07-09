@@ -6,4 +6,6 @@ part 'chat_event.freezed.dart';
 abstract class ChatEvent with _$ChatEvent {
   const factory ChatEvent.send(ChatMessage message) = ChatSend;
   const factory ChatEvent.receive(ChatMessage message) = ChatReceive;
+    const factory ChatEvent.tokengenrate(String userid) = tokengen;
+
 }

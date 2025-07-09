@@ -11,7 +11,7 @@ import 'package:talky/features/video_call/presentation/view/video_call.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.users,
+    initialLocation: AppRoutes.splash,
     routes: [
       GoRoute(
         path: AppRoutes.splash,
@@ -23,22 +23,25 @@ class AppRouter {
         name: RouteNames.videoCall,
         builder: (context, state) => VideoCall(),
       ),
-       GoRoute(
+      GoRoute(
         path: AppRoutes.chat,
         name: RouteNames.chat,
-        builder: (context, state) => ChatScreen(),
+        builder: (context, state) {
+          final userId = state.pathParameters['userId']!;
+          return ChatScreen(user: userId);
+        },
       ),
-        GoRoute(
+      GoRoute(
         path: AppRoutes.register,
         name: RouteNames.register,
         builder: (context, state) => Register(),
       ),
-          GoRoute(
+      GoRoute(
         path: AppRoutes.login,
         name: RouteNames.login,
-        builder: (context, state) =>  Login(),
+        builder: (context, state) => Login(),
       ),
-          GoRoute(
+      GoRoute(
         path: AppRoutes.otp,
         name: RouteNames.otp,
         builder: (context, state) {
@@ -47,10 +50,10 @@ class AppRouter {
         },
       ),
 
-         GoRoute(
+      GoRoute(
         path: AppRoutes.users,
         name: RouteNames.users,
-        builder: (context, state) =>  UserPage(),
+        builder: (context, state) => UserPage(),
       ),
     ],
   );

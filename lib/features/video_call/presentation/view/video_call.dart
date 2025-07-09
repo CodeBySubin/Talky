@@ -17,7 +17,7 @@ class _VideoCallState extends State<VideoCall> {
   @override
   void initState() {
     super.initState();
-    // context.read<VideoCallBloc>().add(const VideoCallEvents.started());
+    context.read<VideoCallBloc>().add(const VideoCallEvents.started());
   }
 
   @override

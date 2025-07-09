@@ -1,4 +1,4 @@
-import 'package:talky/features/authentication/data/repository/auth_repositor_impl.dart';
+import 'package:talky/features/authentication/data/auth_repositor_impl.dart';
 
 class SendOtp {
   final AuthRepository repository;

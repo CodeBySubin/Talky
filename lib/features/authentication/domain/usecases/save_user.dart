@@ -1,4 +1,4 @@
-import '../../data/repository/auth_repositor_impl.dart';
+import '../../data/auth_repositor_impl.dart';
 
 class SaveUser {
   final AuthRepository repository;

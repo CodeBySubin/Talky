@@ -2,8 +2,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:talky/core/network/firebas_api_client.dart';
+import 'package:talky/core/utils/secure_storage.dart';
 
-import '../../data/repository/auth_repositor_impl.dart';
+import '../../data/auth_repositor_impl.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth _fireBaseAuth;
@@ -35,7 +36,6 @@ class AuthRepositoryImpl implements AuthRepository {
     return completer.future;
   }
 
-
   @override
   Future<void> verifyOtp(String smsCode) async {
     final credential = PhoneAuthProvider.credential(
@@ -44,7 +44,6 @@ class AuthRepositoryImpl implements AuthRepository {
     );
     await _fireBaseAuth.signInWithCredential(credential);
   }
-
 
   @override
   Future<void> saveUser(String name, String phone, String password) async {
@@ -60,6 +59,10 @@ class AuthRepositoryImpl implements AuthRepository {
         'createdAt': FieldValue.serverTimestamp(),
       },
     );
+    print(name);
+    print(phone);
+    print(password);
+    SecureStorageHelper.saveToken(name,"user");
   }
 
   @override
